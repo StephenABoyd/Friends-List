@@ -21,7 +21,10 @@
               "apps/friends-list/src/favicon.ico",
               "apps/friends-list/src/assets"
             ],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/friends-list/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/friends-list/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -116,6 +119,31 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/friends-list-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "shell-header": {
+      "projectType": "library",
+      "root": "libs/shell/header",
+      "sourceRoot": "libs/shell/header/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shell/header"],
+          "options": {
+            "jestConfig": "libs/shell/header/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shell/header/src/**/*.ts",
+              "libs/shell/header/src/**/*.html"
+            ]
           }
         }
       }

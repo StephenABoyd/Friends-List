@@ -25,6 +25,9 @@
     "friends-list-e2e": {
       "tags": [],
       "implicitDependencies": ["friends-list"]
+    },
+    "shell-header": {
+      "tags": []
     }
   }
 }
