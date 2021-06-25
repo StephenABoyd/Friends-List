@@ -19,6 +19,12 @@
     }
   },
   "projects": {
+    "features-add-friend": {
+      "tags": []
+    },
+    "features-friends-list": {
+      "tags": []
+    },
     "friends-list": {
       "tags": []
     },

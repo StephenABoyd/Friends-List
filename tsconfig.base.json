@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@app-friends/features/add-friend": [
+        "libs/features/add-friend/src/index.ts"
+      ],
+      "@app-friends/features/friends-list": [
+        "libs/features/friends-list/src/index.ts"
+      ],
       "@app-friends/shell/header": ["libs/shell/header/src/index.ts"]
     }
   },

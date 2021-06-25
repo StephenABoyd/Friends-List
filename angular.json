@@ -1,6 +1,56 @@
 {
   "version": 1,
   "projects": {
+    "features-add-friend": {
+      "projectType": "library",
+      "root": "libs/features/add-friend",
+      "sourceRoot": "libs/features/add-friend/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/add-friend"],
+          "options": {
+            "jestConfig": "libs/features/add-friend/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/add-friend/src/**/*.ts",
+              "libs/features/add-friend/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "features-friends-list": {
+      "projectType": "library",
+      "root": "libs/features/friends-list",
+      "sourceRoot": "libs/features/friends-list/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/friends-list"],
+          "options": {
+            "jestConfig": "libs/features/friends-list/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/friends-list/src/**/*.ts",
+              "libs/features/friends-list/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "friends-list": {
       "projectType": "application",
       "root": "apps/friends-list",
