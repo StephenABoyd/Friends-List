@@ -21,7 +21,10 @@
       "@app-friends/features/friends-list": [
         "libs/features/friends-list/src/index.ts"
       ],
-      "@app-friends/shell/header": ["libs/shell/header/src/index.ts"]
+      "@app-friends/shell/header": ["libs/shell/header/src/index.ts"],
+      "@app-friends/utils/friend-store": [
+        "libs/utils/friend-store/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

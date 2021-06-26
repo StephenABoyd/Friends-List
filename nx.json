@@ -34,6 +34,9 @@
     },
     "shell-header": {
       "tags": []
+    },
+    "utils-friend-store": {
+      "tags": []
     }
   }
 }
