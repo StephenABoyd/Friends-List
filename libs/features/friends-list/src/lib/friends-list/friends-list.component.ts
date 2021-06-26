@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State, Friend } from '@app-friends/utils/friend-store';
+import { State, Friend, removeFromMyFriends } from '@app-friends/utils/friend-store';
 
 @Component({
   selector: 'friends-list',
@@ -16,5 +16,11 @@ export class FriendsListComponent implements OnInit {
     this.store.select('friends').subscribe(friendsState => {
       this.myFriends = friendsState.myFriends;
     });
+  }
+
+  remove(friend: Friend) {
+    this.store.dispatch(removeFromMyFriends({
+      friend
+    }));
   }
 }

@@ -20,21 +20,23 @@ export const initialState: State = {
 
 const _friendReducer = createReducer(
   initialState,
-  on(addToAllFriends, (state, action) => ({
+  on(addToAllFriends, (state, action) => {
+    const allFriends = [...state.allFriends];
+    if (allFriends.findIndex(friend => friend.name === action.friend.name) === -1) {
+      allFriends.push(action.friend)
+    }
+    return {
+      ...state,
+      allFriends
+    }
+  }),
+  on(addToMyFriends, (state, action) => ({
     ...state,
-    allFriends: [
-      ...state.allFriends,
-      action.friend
-    ]
-  })),
-  on(addToMyFriends, (state, action) => {
-    console.log(action.friend)
-    return {...state,
     myFriends: [
       ...state.myFriends,
       action.friend
-    ]}
-  }),
+    ]
+  })),
   on(removeFromMyFriends, (state, action) => ({
     ...state,
     myFriends: state.myFriends.filter(friend => friend.name !== action.friend.name)

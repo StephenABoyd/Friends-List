@@ -2,13 +2,16 @@
 <div class="container">
   <h2>My Friends</h2>
 
-  <div *ngFor="let friend of myFriends" class="container my-friend">
-    <ng-container *ngIf="friend.name">
+  <ng-container *ngFor="let friend of myFriends">
+    <div *ngIf="friend.name" class="container my-friend">
       <span class="name">{{ friend.name }}</span>
       <span *ngIf="friend.age">Age: {{ friend.age }}</span>
       <span *ngIf="friend.weight">Weight: {{ friend.weight }}</span>
-    </ng-container>
-  </div>
+      <button mat-icon-button aria-label="Remove Friend" class="remove" (click)="remove(friend)">
+        Remove <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+  </ng-container>
 
   <div *ngIf="!myFriends || myFriends.length === 0" class="no-friends">
     <span>No friends added yet! Add some here!</span>

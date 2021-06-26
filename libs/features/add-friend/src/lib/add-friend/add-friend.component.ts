@@ -19,13 +19,14 @@ export class AddFriendComponent implements OnInit{
   addFriendForm: FormGroup;
   selectedFriends: Friend[] = [];
   allFriends: Friend[] = [];
+  myFriends: Friend[] = [];
   filteredAllFriends: Observable<Friend[]>;
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
   constructor(private readonly fb: FormBuilder, private readonly store: Store<{friends: State}>) {
     this.addFriendForm = this.fb.group({
-      name: this.fb.control('', Validators.required),
-      friend: this.fb.control(''),
+      name: this.fb.control(null, Validators.required),
+      friend: this.fb.control(null),
       age: this.fb.control(null, Validators.required),
       weight: this.fb.control(null, Validators.required)
     });
@@ -43,8 +44,9 @@ export class AddFriendComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.store.select('friends').subscribe(friends => {
-      this.allFriends = friends.allFriends;
+    this.store.select('friends').subscribe(friendsState => {
+      this.allFriends = friendsState.allFriends;
+      this.myFriends = friendsState.myFriends;
     });
   }
 
@@ -93,17 +95,26 @@ export class AddFriendComponent implements OnInit{
   }
 
   onSubmit() {
+    for(const control in this.addFriendForm.controls) {
+      this.addFriendForm.controls[control].updateValueAndValidity();
+    }
     if (this.addFriendForm.valid) {
-      const friendToAdd = this.addFriendForm.value;
+      const friendToAdd = {
+        ...this.addFriendForm.value,
+        friends: this.selectedFriends
+      };
       delete friendToAdd.friend;
-      friendToAdd.friends = this.selectedFriends;
 
-      if (this.allFriends.findIndex(friend => friend.name === friendToAdd.name) === -1) {
+      if (this.myFriends.findIndex(friend => friend.name === friendToAdd.name) === -1) {
         this.store.dispatch(addToMyFriends({
           friend: friendToAdd
         }));
       } else {
         // TODO: show message saying friend already added
+      }
+      for(const control in this.addFriendForm.controls) {
+        this.addFriendForm.controls[control].setValue(null);
+        this.addFriendForm.controls[control].setErrors(null);
       }
     }
   }
