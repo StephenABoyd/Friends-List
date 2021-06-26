@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map } from 'rxjs/operators';
@@ -24,10 +24,10 @@ export class AddFriendComponent implements OnInit{
 
   constructor(private readonly fb: FormBuilder, private readonly store: Store<{friends: State}>) {
     this.addFriendForm = this.fb.group({
-      name: this.fb.control(''),
+      name: this.fb.control('', Validators.required),
       friend: this.fb.control(''),
-      age: this.fb.control(0),
-      weight: this.fb.control(0)
+      age: this.fb.control(null, Validators.required),
+      weight: this.fb.control(null, Validators.required)
     });
 
     this.filteredAllFriends = this.friendInput.valueChanges.pipe(
@@ -49,26 +49,29 @@ export class AddFriendComponent implements OnInit{
   }
 
   add(event: MatChipInputEvent) {
-    if(this.selectedFriends.findIndex(friend => friend.name === event.value) === -1) {
-      const friend = this.allFriends.find(friend => friend.name === event.value);
-      if (friend) {
-        this.selectedFriends.push(friend);
-      } else {
-        this.selectedFriends.push({
-          name: event.value
-        });
-      }
-    }
-    event.chipInput?.clear();
-    this.friendInput.setValue(null);
-
-    const existingFriend = this.allFriends.findIndex((friend) => friend.name === event.value) >= 0;
-    if (!existingFriend) {
-      this.store.dispatch(addToAllFriends({
-        friend: {
-          name: event.value
+    if (event?.value?.trim() !== '') {
+      event.value = event.value.trim();
+      if(this.selectedFriends.findIndex(friend => friend.name === event.value) === -1) {
+        const friend = this.allFriends.find(friend => friend.name === event.value);
+        if (friend) {
+          this.selectedFriends.push(friend);
+        } else {
+          this.selectedFriends.push({
+            name: event.value
+          });
         }
-      }));
+      }
+      event.chipInput?.clear();
+      this.friendInput.setValue(null);
+
+      const existingFriend = this.allFriends.findIndex((friend) => friend.name === event.value) >= 0;
+      if (!existingFriend) {
+        this.store.dispatch(addToAllFriends({
+          friend: {
+            name: event.value
+          }
+        }));
+      }
     }
   }
 
@@ -90,16 +93,18 @@ export class AddFriendComponent implements OnInit{
   }
 
   onSubmit() {
-    const friendToAdd = this.addFriendForm.value;
-    delete friendToAdd.friend;
-    friendToAdd.friends = this.selectedFriends;
+    if (this.addFriendForm.valid) {
+      const friendToAdd = this.addFriendForm.value;
+      delete friendToAdd.friend;
+      friendToAdd.friends = this.selectedFriends;
 
-    if (this.allFriends.findIndex(friend => friend.name === friendToAdd.name) === -1) {
-      this.store.dispatch(addToMyFriends({
-        friend: friendToAdd
-      }));
-    } else {
-      // TODO: show message saying friend already added
+      if (this.allFriends.findIndex(friend => friend.name === friendToAdd.name) === -1) {
+        this.store.dispatch(addToMyFriends({
+          friend: friendToAdd
+        }));
+      } else {
+        // TODO: show message saying friend already added
+      }
     }
   }
 

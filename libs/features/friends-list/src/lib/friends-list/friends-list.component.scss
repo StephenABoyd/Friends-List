@@ -1,0 +1,18 @@
+h2 {
+  text-align: center;
+}
+
+.my-friend {
+  border-radius: 0.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .name {
+    font-size: large;
+  }
+}
+
+.no-friends {
+  text-align: center;
+}
