@@ -116,6 +116,7 @@ export class AddFriendComponent implements OnInit{
         this.addFriendForm.controls[control].setValue(null);
         this.addFriendForm.controls[control].setErrors(null);
       }
+      this.selectedFriends = [];
     }
   }
 

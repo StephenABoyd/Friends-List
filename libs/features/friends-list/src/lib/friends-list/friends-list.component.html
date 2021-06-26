@@ -3,7 +3,10 @@
   <h2>My Friends</h2>
 
   <ng-container *ngFor="let friend of myFriends">
-    <div *ngIf="friend.name" class="container my-friend">
+    <div *ngIf="friend.name"
+         class="container my-friend"
+         [ngClass]="{'hover': selectable}"
+         (click)="select(friend)">
       <span class="name">{{ friend.name }}</span>
       <span *ngIf="friend.age">Age: {{ friend.age }}</span>
       <span *ngIf="friend.weight">Weight: {{ friend.weight }}</span>

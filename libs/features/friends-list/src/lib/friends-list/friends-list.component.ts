@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State, Friend, removeFromMyFriends } from '@app-friends/utils/friend-store';
 
@@ -8,6 +8,8 @@ import { State, Friend, removeFromMyFriends } from '@app-friends/utils/friend-st
   styleUrls: ['./friends-list.component.scss']
 })
 export class FriendsListComponent implements OnInit {
+  @Input() selectable?: boolean;
+  @Output() selectFriend = new EventEmitter<Friend>();
   myFriends: Friend[] = [];
 
   constructor(private readonly store: Store<{ friends: State }>) {}
@@ -22,5 +24,11 @@ export class FriendsListComponent implements OnInit {
     this.store.dispatch(removeFromMyFriends({
       friend
     }));
+  }
+
+  select(friend: Friend) {
+    if (this.selectable) {
+      this.selectFriend.emit(friend);
+    }
   }
 }

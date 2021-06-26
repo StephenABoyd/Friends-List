@@ -18,6 +18,9 @@
       "@app-friends/features/add-friend": [
         "libs/features/add-friend/src/index.ts"
       ],
+      "@app-friends/features/friend-details": [
+        "libs/features/friend-details/src/index.ts"
+      ],
       "@app-friends/features/friends-list": [
         "libs/features/friends-list/src/index.ts"
       ],

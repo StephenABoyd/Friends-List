@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShellHeaderModule } from '@app-friends/shell/header';
 import { AddFriendModule } from '@app-friends/features/add-friend';
 import { FriendsListModule } from '@app-friends/features/friends-list';
+import { FriendDetailsModule } from '@app-friends/features/friend-details';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -20,6 +21,7 @@ import { friendReducer, FriendsEffects } from '@app-friends/utils/friend-store';
     ShellHeaderModule,
     AddFriendModule,
     FriendsListModule,
+    FriendDetailsModule,
     StoreModule.forRoot(
       {
         friends: friendReducer

@@ -3,5 +3,9 @@
 </nav>
 <main>
   <add-friend></add-friend>
-  <friends-list></friends-list>
+  <friends-list [selectable]="true"
+                (selectFriend)="openFriendDetails($event)"></friends-list>
+  <ng-container *ngIf="friendDetails">
+    <friend-details [friend]="friendDetails"></friend-details>
+  </ng-container>
 </main>

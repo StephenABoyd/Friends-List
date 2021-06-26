@@ -22,3 +22,9 @@ h2 {
 .no-friends {
   text-align: center;
 }
+
+.hover {
+  &:hover {
+    cursor: pointer;
+  }
+}

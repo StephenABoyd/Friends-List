@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Friend } from '@app-friends/utils/friend-store';
 
 @Component({
   selector: 'app-friends-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'friends-list';
+  friendDetails: Friend | undefined;
+
+  openFriendDetails(friend: Friend) {
+    this.friendDetails = friend;
+  }
 }

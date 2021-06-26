@@ -26,6 +26,31 @@
         }
       }
     },
+    "features-friend-details": {
+      "projectType": "library",
+      "root": "libs/features/friend-details",
+      "sourceRoot": "libs/features/friend-details/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/friend-details"],
+          "options": {
+            "jestConfig": "libs/features/friend-details/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/friend-details/src/**/*.ts",
+              "libs/features/friend-details/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "features-friends-list": {
       "projectType": "library",
       "root": "libs/features/friends-list",
