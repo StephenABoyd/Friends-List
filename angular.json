@@ -26,6 +26,31 @@
         }
       }
     },
+    "features-dashboard-dashboards-feature": {
+      "projectType": "library",
+      "root": "libs/features/dashboard/dashboards-feature",
+      "sourceRoot": "libs/features/dashboard/dashboards-feature/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/dashboard/dashboards-feature"],
+          "options": {
+            "jestConfig": "libs/features/dashboard/dashboards-feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/dashboard/dashboards-feature/src/**/*.ts",
+              "libs/features/dashboard/dashboards-feature/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "features-friend-details": {
       "projectType": "library",
       "root": "libs/features/friend-details",
@@ -46,6 +71,31 @@
             "lintFilePatterns": [
               "libs/features/friend-details/src/**/*.ts",
               "libs/features/friend-details/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "features-friends-feature": {
+      "projectType": "library",
+      "root": "libs/features/friends-feature",
+      "sourceRoot": "libs/features/friends-feature/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/friends-feature"],
+          "options": {
+            "jestConfig": "libs/features/friends-feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/friends-feature/src/**/*.ts",
+              "libs/features/friends-feature/src/**/*.html"
             ]
           }
         }
@@ -219,6 +269,27 @@
               "libs/shell/header/src/**/*.ts",
               "libs/shell/header/src/**/*.html"
             ]
+          }
+        }
+      }
+    },
+    "utils-core-store": {
+      "root": "libs/utils/core-store",
+      "sourceRoot": "libs/utils/core-store/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/utils/core-store/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/utils/core-store"],
+          "options": {
+            "jestConfig": "libs/utils/core-store/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

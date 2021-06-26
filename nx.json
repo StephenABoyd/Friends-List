@@ -22,7 +22,13 @@
     "features-add-friend": {
       "tags": []
     },
+    "features-dashboard-dashboards-feature": {
+      "tags": []
+    },
     "features-friend-details": {
+      "tags": []
+    },
+    "features-friends-feature": {
       "tags": []
     },
     "features-friends-list": {
@@ -36,6 +42,9 @@
       "implicitDependencies": ["friends-list"]
     },
     "shell-header": {
+      "tags": []
+    },
+    "utils-core-store": {
       "tags": []
     },
     "utils-friend-store": {

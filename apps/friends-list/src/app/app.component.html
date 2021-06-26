@@ -2,16 +2,7 @@
   <shell-header></shell-header>
 </nav>
 <main>
-  <div class="split-view">
-    <div class="split-view-child">
-      <friends-list [selectable]="true"></friends-list>
-      <add-friend *ngIf="showAdd"
-                  (closeForm)="showAdd = false"></add-friend>
-      <button mat-button color="primary" (click)="openAddNew()">Add New Friend <mat-icon>add_circle_outline</mat-icon></button>
-    </div>
-    <div *ngIf="friendDetails" class="split-view-child">
-      <friend-details [friend]="friendDetails"
-                      (closeForm)="friendDetails = undefined"></friend-details>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </main>
+
+

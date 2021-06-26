@@ -6,5 +6,8 @@ module.exports = {
     '<rootDir>/libs/features/friends-list',
     '<rootDir>/libs/utils/friend-store',
     '<rootDir>/libs/features/friend-details',
+    '<rootDir>/libs/utils/core-store',
+    '<rootDir>/libs/features/friends-feature',
+    '<rootDir>/libs/features/dashboard/dashboards-feature',
   ],
 };

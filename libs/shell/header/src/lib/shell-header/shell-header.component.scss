@@ -1,7 +1,37 @@
-h1 {
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   color: white;
-  margin: 0;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  text-align: center;
+
+  .title {
+    flex: 1;
+    margin: 0;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  .nav-items {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1rem;
+
+
+    .nav-item {
+      padding: 1rem;
+      color: white;
+      text-decoration: none;
+      margin-top: 0.25rem;
+
+      h3 {
+        margin: 0;
+      }
+
+      &:visited {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
 }

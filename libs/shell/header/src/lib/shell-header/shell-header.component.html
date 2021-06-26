@@ -1,1 +1,8 @@
-<h1 class="background-primary">Friends List</h1>
+<div class="header background-primary ">
+  <h1 class="title">Friends List</h1>
+  <div class="nav-items">
+    <a [routerLink]="[navItem.link]" *ngFor="let navItem of navItems" class="nav-item">
+      <h3>{{ navItem.label }}</h3>
+    </a>
+  </div>
+</div>

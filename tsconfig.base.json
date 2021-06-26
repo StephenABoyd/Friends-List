@@ -18,13 +18,20 @@
       "@app-friends/features/add-friend": [
         "libs/features/add-friend/src/index.ts"
       ],
+      "@app-friends/features/dashboard/dashboards-feature": [
+        "libs/features/dashboard/dashboards-feature/src/index.ts"
+      ],
       "@app-friends/features/friend-details": [
         "libs/features/friend-details/src/index.ts"
+      ],
+      "@app-friends/features/friends-feature": [
+        "libs/features/friends-feature/src/index.ts"
       ],
       "@app-friends/features/friends-list": [
         "libs/features/friends-list/src/index.ts"
       ],
       "@app-friends/shell/header": ["libs/shell/header/src/index.ts"],
+      "@app-friends/utils/core-store": ["libs/utils/core-store/src/index.ts"],
       "@app-friends/utils/friend-store": [
         "libs/utils/friend-store/src/index.ts"
       ]

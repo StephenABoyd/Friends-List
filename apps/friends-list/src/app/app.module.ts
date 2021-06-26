@@ -12,8 +12,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { friendReducer, FriendsEffects } from '@app-friends/utils/friend-store';
+import { coreReducer } from '@app-friends/utils/core-store';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,9 +28,25 @@ import { MatIconModule } from '@angular/material/icon';
     FriendDetailsModule,
     MatButtonModule,
     MatIconModule,
+    RouterModule.forRoot([
+      {
+        path: 'dashboards',
+        loadChildren: () => import('@app-friends/features/dashboard/dashboards-feature').then(m => m.DashboardsFeatureModule)
+      },
+      {
+        path: 'friends',
+        loadChildren: () => import('@app-friends/features/friends-feature').then(m => m.FriendsFeatureModule)
+      },
+      {
+        path: '',
+        redirectTo: '/friends',
+        pathMatch: 'full'
+      }
+    ]),
     StoreModule.forRoot(
       {
-        friends: friendReducer
+        friends: friendReducer,
+        core: coreReducer
       },
       {
         metaReducers: !environment.production ? [] : [],

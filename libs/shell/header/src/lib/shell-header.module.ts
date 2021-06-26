@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellHeaderComponent } from './shell-header/shell-header.component';
+import { StoreModule } from '@ngrx/store';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    StoreModule,
+    RouterModule
+  ],
   declarations: [
     ShellHeaderComponent
   ],
