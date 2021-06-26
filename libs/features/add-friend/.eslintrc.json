@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app-friends",
+            "prefix": "",
             "style": "kebab-case"
           }
         ]

@@ -1,0 +1,49 @@
+<form [formGroup]="addFriendForm" class="container" (ngSubmit)="onSubmit()">
+  <h2>Add Friend</h2>
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Friends</mat-label>
+    <mat-chip-list #chipList>
+      <mat-chip
+        *ngFor="let friend of selectedFriends"
+        [selectable]="true"
+        [removable]="true"
+        (removed)="remove(friend)">
+        {{friend}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        matAutocompleteOrigin
+        #origin="matAutocompleteOrigin"
+        matInput
+        #friendInput
+        formControlName="friend"
+        [matAutocomplete]="auto"
+        [matAutocompleteConnectedTo]="origin"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Age" formControlName="age" type="number"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Weight" formControlName="weight" type="number"/>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Add Friend</button>
+</form>
+
+<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+  <mat-option *ngFor="let option of filteredAllFriends | async" [value]="option">
+    {{option}}
+  </mat-option>
+</mat-autocomplete>
+
