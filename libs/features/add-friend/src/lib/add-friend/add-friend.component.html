@@ -11,8 +11,8 @@
         *ngFor="let friend of selectedFriends"
         [selectable]="true"
         [removable]="true"
-        (removed)="remove(friend)">
-        {{friend}}
+        (removed)="remove(friend.name)">
+        {{ friend.name }}
         <mat-icon matChipRemove>cancel</mat-icon>
       </mat-chip>
       <input
@@ -43,7 +43,7 @@
 
 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
   <mat-option *ngFor="let option of filteredAllFriends | async" [value]="option">
-    {{option}}
+    {{option.name}}
   </mat-option>
 </mat-autocomplete>
 
