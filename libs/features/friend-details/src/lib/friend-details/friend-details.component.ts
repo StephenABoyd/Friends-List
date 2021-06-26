@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Friend } from '@app-friends/utils/friend-store';
 
 @Component({
@@ -7,5 +7,10 @@ import { Friend } from '@app-friends/utils/friend-store';
   styleUrls: ['./friend-details.component.scss']
 })
 export class FriendDetailsComponent {
-  @Input() friend?: Friend
+  @Input() friend?: Friend;
+  @Output() closeForm = new EventEmitter<void>();
+
+  close() {
+    this.closeForm.emit();
+  }
 }

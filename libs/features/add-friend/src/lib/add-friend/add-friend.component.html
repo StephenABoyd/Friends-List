@@ -1,6 +1,10 @@
 <form [formGroup]="addFriendForm" class="container" (ngSubmit)="onSubmit()">
-  <h2>Add Friend</h2>
-  <mat-form-field>
+    <div class="title">
+      <mat-icon class="close" (click)="closeUpdate()">close</mat-icon>
+      <h2 *ngIf="!update">Add Friend</h2>
+      <h2 *ngIf="update">{{friend?.name || 'No Name'}}</h2>
+    </div>
+  <mat-form-field *ngIf="!update || !friend?.name">
     <input matInput placeholder="Name" formControlName="name"/>
   </mat-form-field>
 
@@ -26,7 +30,8 @@
         [matAutocomplete]="auto"
         [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)">
+        (matChipInputTokenEnd)="add($event)"
+        (blur)="onBlur($event)">
     </mat-chip-list>
   </mat-form-field>
 
@@ -38,7 +43,7 @@
     <input matInput placeholder="Weight" formControlName="weight" type="number"/>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Add Friend</button>
+  <button mat-raised-button color="primary" type="submit">{{ update ? 'Update' : 'Add'}} Friend</button>
 </form>
 
 <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">

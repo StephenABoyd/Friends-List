@@ -2,10 +2,16 @@
   <shell-header></shell-header>
 </nav>
 <main>
-  <add-friend></add-friend>
-  <friends-list [selectable]="true"
-                (selectFriend)="openFriendDetails($event)"></friends-list>
-  <ng-container *ngIf="friendDetails">
-    <friend-details [friend]="friendDetails"></friend-details>
-  </ng-container>
+  <div class="split-view">
+    <div class="split-view-child">
+      <friends-list [selectable]="true"></friends-list>
+      <add-friend *ngIf="showAdd"
+                  (closeForm)="showAdd = false"></add-friend>
+      <button mat-button color="primary" (click)="openAddNew()">Add New Friend <mat-icon>add_circle_outline</mat-icon></button>
+    </div>
+    <div *ngIf="friendDetails" class="split-view-child">
+      <friend-details [friend]="friendDetails"
+                      (closeForm)="friendDetails = undefined"></friend-details>
+    </div>
+  </div>
 </main>
