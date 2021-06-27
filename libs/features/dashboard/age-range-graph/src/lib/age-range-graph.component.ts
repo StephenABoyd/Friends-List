@@ -111,7 +111,7 @@ export class AgeRangeGraphComponent implements OnInit, AfterViewInit {
                 .range([0, size.chartHeight]);
 
     const yAxis = d3.axisLeft(y)
-                    .ticks(this.ranges.length + 2)
+                    .ticks(highestCount)
 
     svg.append('g')
        .attr('transform', 'translate(0,-10)')
@@ -121,6 +121,7 @@ export class AgeRangeGraphComponent implements OnInit, AfterViewInit {
                    .x(function(d, i) { return x(i); })
                    .y(function(d: any) { return y(d.count)})
                    .curve(d3.curveCatmullRom);
+
     svg.append('path')
        .datum(this.ranges)
        .attr('d', line)
