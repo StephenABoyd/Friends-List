@@ -52,7 +52,7 @@ export class AgeRangeGraphComponent implements OnInit, AfterViewInit {
     this.updateRangeChart();
   }
 
-  updateRangeData() {
+  private updateRangeData(): void {
     for (const range in this.ranges) {
       this.ranges[range].count = 0;
       this.myFriends.forEach(friend => {
@@ -61,11 +61,9 @@ export class AgeRangeGraphComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
-    console.log(this.ranges)
   }
 
-  updateRangeChart() {
+  private updateRangeChart(): void {
     const margin = {
       top: 15,
       right: 25,
@@ -87,48 +85,58 @@ export class AgeRangeGraphComponent implements OnInit, AfterViewInit {
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     const x = d3.scaleLinear()
-                .domain([0, this.ranges.length])
-                .range([0, size.chartWidth]);
+      .domain([0, this.ranges.length])
+      .range([0, size.chartWidth]);
 
     const xAxis = d3.axisBottom(x)
-                    .tickFormat((d, i) => {
-                      console.log(i)
-                      if (i < this.ranges.length)
-                        return this.ranges[i].label;
-
-                      return '';
-                    })
-                    .ticks(this.ranges.length - 1);
+      .tickFormat((d, i) => {
+        return this.getTickLabel(i);
+      })
+      .ticks(this.ranges.length - 1);
 
     svg.append('g')
        .attr("transform", "translate(0," + (size.chartHeight - 10) + ")")
        .call(xAxis);
 
-    let highestCount = 0;
-    this.ranges.forEach(range => range.count > highestCount ? highestCount = range.count : null);
+    const highestCount = this.getHighestCount();
+
     const y = d3.scaleLinear()
-                .domain([highestCount, 0])
-                .range([0, size.chartHeight]);
+      .domain([highestCount, 0])
+      .range([0, size.chartHeight]);
 
     const yAxis = d3.axisLeft(y)
-                    .ticks(highestCount)
+      .ticks(highestCount)
 
     svg.append('g')
        .attr('transform', 'translate(0,-10)')
        .call(yAxis)
 
     const line: any = d3.line()
-                   .x(function(d, i) { return x(i); })
-                   .y(function(d: any) { return y(d.count)})
-                   .curve(d3.curveCatmullRom);
+      .x(function(d, i) { return x(i); })
+      .y(function(d: any) { return y(d.count)})
+      .curve(d3.curveCatmullRom);
 
     svg.append('path')
-       .datum(this.ranges)
-       .attr('d', line)
-       .attr('fill', 'none')
-       .attr('stroke', '#673ab7')
-       .attr('stroke-width', '3')
-       .attr('transform', 'translate(0,-10)')
+      .datum(this.ranges)
+      .attr('d', line)
+      .attr('fill', 'none')
+      .attr('stroke', '#673ab7')
+      .attr('stroke-width', '3')
+      .attr('transform', 'translate(0,-10)')
+  }
+
+  private getHighestCount(): number {
+    let highestCount = 0;
+    this.ranges.forEach(range => range.count > highestCount ? highestCount = range.count : null);
+    return highestCount;
+  }
+
+  private getTickLabel(index: number): string {
+    if (index < this.ranges.length) {
+      return this.ranges[index].label;
+    }
+
+    return '';
   }
 
 }
