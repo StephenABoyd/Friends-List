@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/libs/features/friends/friends-feature',
     '<rootDir>/libs/features/dashboard/dashboards-feature',
     '<rootDir>/libs/features/dashboard/age-graph',
+    '<rootDir>/libs/features/dashboard/age-range-graph',
   ],
 };

@@ -1,0 +1,9 @@
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+
+  .graph {
+    flex: 1 0 auto;
+    min-width: 450px;
+  }
+}

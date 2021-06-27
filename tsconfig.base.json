@@ -15,14 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@app-friends/features/friends/add-friend": [
-        "libs/features/friends/add-friend/src/index.ts"
-      ],
       "@app-friends/features/dashboard/age-graph": [
         "libs/features/dashboard/age-graph/src/index.ts"
       ],
+      "@app-friends/features/dashboard/age-range-graph": [
+        "libs/features/dashboard/age-range-graph/src/index.ts"
+      ],
       "@app-friends/features/dashboard/dashboards-feature": [
         "libs/features/dashboard/dashboards-feature/src/index.ts"
+      ],
+      "@app-friends/features/friends/add-friend": [
+        "libs/features/friends/add-friend/src/index.ts"
       ],
       "@app-friends/features/friends/friend-details": [
         "libs/features/friends/friend-details/src/index.ts"

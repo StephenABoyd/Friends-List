@@ -74,8 +74,8 @@ export interface State {
 }
 
 export const initialState: State = {
-  allFriends: mockFriends,
-  myFriends: mockFriends,
+  allFriends: [],
+  myFriends: [],
   selectedFriend: undefined
 }
 

@@ -1,0 +1,9 @@
+<h1>Insights</h1>
+<div *ngIf="myFriends && myFriends.length > 0; else noFriends" class="flex">
+  <div class="graph"><age-graph></age-graph></div>
+  <div class="graph"><age-range-graph></age-range-graph></div>
+</div>
+
+<ng-template #noFriends>
+  No friends have been added yet! Add some <a routerLink="/friends">here</a>
+</ng-template>

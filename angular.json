@@ -51,6 +51,31 @@
         }
       }
     },
+    "features-dashboard-age-range-graph": {
+      "projectType": "library",
+      "root": "libs/features/dashboard/age-range-graph",
+      "sourceRoot": "libs/features/dashboard/age-range-graph/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/dashboard/age-range-graph"],
+          "options": {
+            "jestConfig": "libs/features/dashboard/age-range-graph/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/dashboard/age-range-graph/src/**/*.ts",
+              "libs/features/dashboard/age-range-graph/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "features-dashboard-dashboards-feature": {
       "projectType": "library",
       "root": "libs/features/dashboard/dashboards-feature",

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AgeGraphComponent } from './age-graph.component';
+import { AgeRangeGraphComponent } from './age-range-graph.component';
 import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
@@ -9,10 +9,10 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ],
   declarations: [
-    AgeGraphComponent
+    AgeRangeGraphComponent
   ],
   exports: [
-    AgeGraphComponent
+    AgeRangeGraphComponent
   ]
 })
-export class AgeGraphModule {}
+export class AgeRangeGraphModule {}

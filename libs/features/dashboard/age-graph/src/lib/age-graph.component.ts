@@ -55,7 +55,7 @@ export class AgeGraphComponent implements OnInit, AfterViewInit {
     const y = d3.scaleBand()
       .range([0, size.chartHeight])
       .domain(this.ageData.map(friend => friend.name))
-      .padding(.15);
+      .padding(.6 / this.myFriends.length);
 
     const bars = svg.selectAll('rect')
       .data(this.ageData)

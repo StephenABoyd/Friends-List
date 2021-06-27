@@ -25,6 +25,9 @@
     "features-dashboard-age-graph": {
       "tags": []
     },
+    "features-dashboard-age-range-graph": {
+      "tags": []
+    },
     "features-dashboard-dashboards-feature": {
       "tags": []
     },
