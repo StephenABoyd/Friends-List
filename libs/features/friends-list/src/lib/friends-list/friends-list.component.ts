@@ -10,6 +10,7 @@ import { State, Friend, removeFromMyFriends, selectFriend } from '@app-friends/u
 export class FriendsListComponent implements OnInit {
   @Input() selectable?: boolean;
   myFriends: Friend[] = [];
+  displayedColumns = ['name', 'age', 'weight']
 
   constructor(private readonly store: Store<{ friends: State }>) {}
 

@@ -73,7 +73,7 @@ export class AgeGraphComponent implements OnInit, AfterViewInit {
         .attr("x", function(d) { return x(d.age as number) - 3; })
         .attr("y", function(d) { return (y(d.name) as number) + (y.bandwidth() / 2) })
         .attr("dy", ".35em")
-        .attr('fill', '#ffdc75')
+        .attr('fill', 'white')
         .text(function(d) { return d.age as number; });
 
     svg.call(d3.axisLeft(y))
