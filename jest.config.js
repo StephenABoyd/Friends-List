@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/libs/utils/core-store',
     '<rootDir>/libs/features/friends-feature',
     '<rootDir>/libs/features/dashboard/dashboards-feature',
+    '<rootDir>/libs/features/dashboard/age-graph',
   ],
 };

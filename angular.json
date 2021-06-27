@@ -26,6 +26,31 @@
         }
       }
     },
+    "features-dashboard-age-graph": {
+      "projectType": "library",
+      "root": "libs/features/dashboard/age-graph",
+      "sourceRoot": "libs/features/dashboard/age-graph/src",
+      "prefix": "app-friends",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/features/dashboard/age-graph"],
+          "options": {
+            "jestConfig": "libs/features/dashboard/age-graph/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/dashboard/age-graph/src/**/*.ts",
+              "libs/features/dashboard/age-graph/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "features-dashboard-dashboards-feature": {
       "projectType": "library",
       "root": "libs/features/dashboard/dashboards-feature",

@@ -45,6 +45,7 @@
     "@ngrx/router-store": "^12.0.0",
     "@ngrx/store": "^12.0.0",
     "@nrwl/angular": "12.4.0",
+    "d3": "^7.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -66,6 +67,7 @@
     "@nrwl/linter": "12.4.0",
     "@nrwl/tao": "12.4.0",
     "@nrwl/workspace": "12.4.0",
+    "@types/d3": "^7.0.0",
     "@types/jest": "26.0.8",
     "@types/node": "14.14.33",
     "@typescript-eslint/eslint-plugin": "4.19.0",

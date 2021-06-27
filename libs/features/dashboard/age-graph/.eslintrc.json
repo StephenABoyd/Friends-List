@@ -9,7 +9,6 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "@typescript-eslint/no-non-null-assertion": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -22,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app-friends",
+            "prefix": "",
             "style": "kebab-case"
           }
         ]

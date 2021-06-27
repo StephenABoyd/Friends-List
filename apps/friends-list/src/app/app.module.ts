@@ -39,7 +39,7 @@ import { RouterModule } from '@angular/router';
       },
       {
         path: '',
-        redirectTo: '/friends',
+        redirectTo: '/dashboards',
         pathMatch: 'full'
       }
     ]),

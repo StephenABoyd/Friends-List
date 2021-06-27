@@ -18,6 +18,9 @@
       "@app-friends/features/add-friend": [
         "libs/features/add-friend/src/index.ts"
       ],
+      "@app-friends/features/dashboard/age-graph": [
+        "libs/features/dashboard/age-graph/src/index.ts"
+      ],
       "@app-friends/features/dashboard/dashboards-feature": [
         "libs/features/dashboard/dashboards-feature/src/index.ts"
       ],
