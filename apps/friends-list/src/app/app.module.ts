@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShellHeaderModule } from '@app-friends/shell/header';
-import { AddFriendModule } from '@app-friends/features/add-friend';
-import { FriendsListModule } from '@app-friends/features/friends-list';
-import { FriendDetailsModule } from '@app-friends/features/friend-details';
+import { AddFriendModule } from '@app-friends/features/friends/add-friend';
+import { FriendsListModule } from '@app-friends/features/friends/friends-list';
+import { FriendDetailsModule } from '@app-friends/features/friends/friend-details';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -35,7 +35,7 @@ import { RouterModule } from '@angular/router';
       },
       {
         path: 'friends',
-        loadChildren: () => import('@app-friends/features/friends-feature').then(m => m.FriendsFeatureModule)
+        loadChildren: () => import('@app-friends/features/friends/friends-feature').then(m => m.FriendsFeatureModule)
       },
       {
         path: '',

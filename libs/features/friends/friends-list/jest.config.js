@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'features-add-friend',
+  displayName: 'features-friends-list',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/features/add-friend',
+  coverageDirectory: '../../../coverage/libs/features/friends/friends-list',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },
