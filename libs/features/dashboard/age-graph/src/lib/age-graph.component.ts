@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Friend, State } from '@app-friends/utils/friend-store';
 import { Store } from '@ngrx/store';
 import * as d3 from 'd3';
@@ -8,18 +8,17 @@ import * as d3 from 'd3';
   templateUrl: './age-graph.component.html',
   styleUrls: ['./age-graph.component.css']
 })
-export class AgeGraphComponent implements OnInit, AfterViewInit {
+export class AgeGraphComponent implements OnChanges, AfterViewInit {
+  @Input() friends?: State | null;
   myFriends: Friend[] = [];
   ageData: Friend[] = [];
 
-  constructor(private readonly store: Store<{ friends: State}>) {}
-
-  ngOnInit() {
-    this.store.select('friends').subscribe(friendsState => {
-      this.myFriends = friendsState.myFriends;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.friends?.currentValue) {
+      this.myFriends = changes.friends.currentValue.myFriends;
       this.updateAgeData();
       this.updateAgeBarGraph();
-    });
+    }
   }
 
   ngAfterViewInit() {

@@ -1,7 +1,11 @@
 <h1>Insights</h1>
 <div *ngIf="myFriends && myFriends.length > 0; else noFriends" class="flex">
-  <div class="graph"><age-graph></age-graph></div>
-  <div class="graph"><age-range-graph></age-range-graph></div>
+  <div class="graph">
+    <age-graph [friends]="friends | async"></age-graph>
+  </div>
+  <div class="graph">
+    <age-range-graph [friends]="friends | async"></age-range-graph>
+  </div>
 </div>
 
 <ng-template #noFriends>

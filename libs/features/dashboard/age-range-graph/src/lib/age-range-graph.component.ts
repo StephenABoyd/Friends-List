@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Friend, State } from '@app-friends/utils/friend-store';
 import * as d3 from 'd3';
@@ -8,7 +8,8 @@ import * as d3 from 'd3';
   templateUrl: './age-range-graph.component.html',
   styleUrls: ['./age-range-graph.component.scss']
 })
-export class AgeRangeGraphComponent implements OnInit, AfterViewInit {
+export class AgeRangeGraphComponent implements OnChanges, AfterViewInit {
+  @Input() friends?: State | null;
   myFriends: Friend[] = [];
   ranges: {min: number, max: number, count: number, label: string }[] = [
     {
@@ -37,14 +38,13 @@ export class AgeRangeGraphComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  constructor(private readonly store: Store<{ friends: State }>) { }
-
-  ngOnInit(): void {
-    this.store.select('friends').subscribe(friendsState => {
-      this.myFriends = friendsState.myFriends;
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+    if (changes.friends?.currentValue) {
+      this.myFriends = changes.friends.currentValue.myFriends;
       this.updateRangeData();
       this.updateRangeChart();
-    });
+    }
   }
 
   ngAfterViewInit() {

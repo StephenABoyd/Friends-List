@@ -1,0 +1,22 @@
+<h1>My Friends</h1>
+<div class="split-view">
+  <div class="split-view-child">
+    <friends-list [selectable]="true"
+                  [friends]="friendsState | async"
+                  (removeFriend)="removeFriend($event)"
+                  (selected)="friendDetails = $event"></friends-list>
+    <add-friend *ngIf="showAdd"
+                [friends]="friendsState | async"
+                (addToAllFriends)="addToAllFriends($event)"
+                (addToMyFriends)="addToMyFriends($event)"
+                (closeForm)="showAdd = false"></add-friend>
+    <button mat-button color="primary" (click)="openAddNew()">Add New Friend <mat-icon>add_circle_outline</mat-icon></button>
+  </div>
+  <div *ngIf="friendDetails" class="split-view-child-small">
+    <add-friend [update]="true"
+                [friend]="friendDetails"
+                [friends]="friendsState | async"
+                (updateFriend)="updateFriend($event)"
+                (closeForm)="friendDetails = undefined"></add-friend>
+  </div>
+</div>

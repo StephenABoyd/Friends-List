@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Friend, State } from '@app-friends/utils/friend-store';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-friends-dashboards',
@@ -10,12 +12,14 @@ import { Friend, State } from '@app-friends/utils/friend-store';
 export class DashboardsComponent implements OnInit {
   myFriends: Friend[] = [];
   ageData: Friend[] = [];
+  friends?: Observable<State>
 
   constructor(private readonly store: Store<{ friends: State}>) {}
 
   ngOnInit() {
-    this.store.select('friends').subscribe(friendsState => {
-      this.myFriends = friendsState.myFriends;
-    });
+    this.friends = this.store.select('friends');
+    this.friends.subscribe((friendsState) => {
+        this.myFriends = friendsState.myFriends}
+    );
   }
 }

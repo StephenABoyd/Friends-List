@@ -19,9 +19,6 @@
     }
   },
   "projects": {
-    "features-add-friend": {
-      "tags": []
-    },
     "features-dashboard-age-graph": {
       "tags": []
     },
@@ -31,13 +28,7 @@
     "features-dashboard-dashboards-feature": {
       "tags": []
     },
-    "features-friend-details": {
-      "tags": []
-    },
     "features-friends-feature": {
-      "tags": []
-    },
-    "features-friends-list": {
       "tags": []
     },
     "friends-list": {

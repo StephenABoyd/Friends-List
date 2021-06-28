@@ -1,32 +1,35 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Store } from '@ngrx/store';
-import { State, addToAllFriends, Friend, addToMyFriends, updateFriend } from '@app-friends/utils/friend-store';
+import { State, Friend } from '@app-friends/utils/friend-store';
 
 @Component({
   selector: 'add-friend',
   templateUrl: './add-friend.component.html',
   styleUrls: ['./add-friend.component.scss']
 })
-export class AddFriendComponent implements OnInit, OnChanges {
+export class AddFriendComponent implements OnChanges {
   @ViewChild('friendInput') friendInputField: ElementRef<HTMLInputElement> | undefined;
   @Input() friend?: Friend;
   @Input() update?: boolean;
+  @Input() friends?: State | null;
   @Output() closeForm = new EventEmitter<void>();
+  @Output() addToAllFriends = new EventEmitter<Friend>();
+  @Output() addToMyFriends = new EventEmitter<Friend>();
+  @Output() updateFriend = new EventEmitter<Friend>();
 
-  addFriendForm: FormGroup;
-  selectedFriends: Friend[] = [];
   allFriends: Friend[] = [];
   myFriends: Friend[] = [];
+  addFriendForm: FormGroup;
+  selectedFriends: Friend[] = [];
   filteredAllFriends: Observable<Friend[]>;
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor(private readonly fb: FormBuilder, private readonly store: Store<{friends: State}>) {
+  constructor(private readonly fb: FormBuilder) {
     this.addFriendForm = this.fb.group({
       name: this.fb.control(null, Validators.required),
       friend: this.fb.control(null),
@@ -35,27 +38,17 @@ export class AddFriendComponent implements OnInit, OnChanges {
     });
 
     this.filteredAllFriends = this.friendInput.valueChanges.pipe(
-      map(friendName =>
-        {
-          const availableFriends = friendName
-            ? this.allFriends.filter(friend => friend.name.indexOf(friendName) >= 0)
-            : this.allFriends.slice()
-
-          return availableFriends.filter(availableFriend => this.selectedFriends.findIndex(friend => friend.name === availableFriend.name) === -1);
-        }
-    ));
-  }
-
-  ngOnInit() {
-    this.store.select('friends').subscribe(friendsState => {
-      this.allFriends = friendsState.allFriends;
-      this.myFriends = friendsState.myFriends;
-    });
+      map((name) => this.filterFriends(name)));
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const friend = changes.friend.currentValue;
-    if (friend) {
+    if (changes.friends?.currentValue) {
+      this.allFriends = changes.friends.currentValue.allFriends;
+      this.myFriends = changes.friends.currentValue.myFriends;
+    }
+
+    if (changes.friend?.currentValue) {
+      const friend = changes.friend.currentValue;
       this.selectedFriends = [];
       this.addFriendForm.get('age')?.setValue(friend.age);
       this.addFriendForm.get('name')?.setValue(friend.name);
@@ -75,27 +68,9 @@ export class AddFriendComponent implements OnInit, OnChanges {
     this.selectedFriends = [...this.selectedFriends];
     if (name?.trim() !== '') {
       name = name.trim();
-      if(this.selectedFriends.findIndex(friend => friend.name === name) === -1) {
-        const friend = this.allFriends.find(friend => friend.name === name);
-        if (friend) {
-          this.selectedFriends.push(friend);
-        } else {
-          this.selectedFriends.push({
-            name
-          });
-        }
-      }
-
+      this.addToSelectedFriends(name);
       this.friendInput.setValue(null);
-
-      const existingFriend = this.allFriends.findIndex((friend) => friend.name === name) >= 0;
-      if (!existingFriend) {
-        this.store.dispatch(addToAllFriends({
-          friend: {
-            name
-          }
-        }));
-      }
+      this.addFriendToAllFriends(name);
     }
   }
 
@@ -116,7 +91,7 @@ export class AddFriendComponent implements OnInit, OnChanges {
     }
   }
 
-  closeUpdate() {
+  close() {
     this.closeForm?.emit();
   }
 
@@ -133,11 +108,7 @@ export class AddFriendComponent implements OnInit, OnChanges {
 
       if (!this.update) {
         if (this.myFriends.findIndex(friend => friend.name === friendToAdd.name) === -1) {
-          this.store.dispatch(addToMyFriends({
-            friend: friendToAdd
-          }));
-        } else {
-          // TODO: show message saying friend already added
+          this.addToMyFriends.emit(friendToAdd);
         }
         for(const control in this.addFriendForm.controls) {
           this.addFriendForm.controls[control].setValue(null);
@@ -145,7 +116,7 @@ export class AddFriendComponent implements OnInit, OnChanges {
         }
         this.selectedFriends = [];
       } else {
-        this.store.dispatch(updateFriend({friend: friendToAdd}));
+        this.updateFriend.emit(friendToAdd);
       }
     }
   }
@@ -154,10 +125,34 @@ export class AddFriendComponent implements OnInit, OnChanges {
     return this.addFriendForm.get('friend') as FormControl;
   }
 
-  onBlur(event: FocusEvent) {
-    const input = (event.target as HTMLInputElement);
-    const name = input?.value;
-    this.addFriend(name);
-    input.value = '';
+  private addFriendToAllFriends(name: string) {
+    const existingFriend = this.allFriends.findIndex((friend) => friend.name === name) >= 0;
+    if (!existingFriend) {
+      this.addToAllFriends.emit({
+        name
+      });
+    }
+  }
+
+  private addToSelectedFriends(name: string) {
+    if(this.selectedFriends.findIndex(friend => friend.name === name) === -1) {
+      const friend = this.allFriends.find(friend => friend.name === name);
+      if (friend) {
+        this.selectedFriends.push(friend);
+      } else {
+        this.selectedFriends.push({
+          name
+        });
+      }
+    }
+  }
+
+  private filterFriends(friendName: string) {
+    console.log(friendName)
+    const availableFriends = friendName
+          ? this.allFriends.filter(friend => friend.name.indexOf(friendName) >= 0)
+          : this.allFriends.slice()
+
+    return availableFriends.filter(availableFriend => this.selectedFriends.findIndex(friend => friend.name === availableFriend.name) === -1);
   }
 }

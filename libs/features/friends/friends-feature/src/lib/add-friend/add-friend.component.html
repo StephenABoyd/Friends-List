@@ -1,7 +1,7 @@
 <mat-card [ngClass]="{'no-left-margin': update}" class="mat-elevation-z5">
   <form [formGroup]="addFriendForm" (ngSubmit)="onSubmit()">
       <div class="title">
-        <mat-icon class="close" (click)="closeUpdate()">close</mat-icon>
+        <mat-icon class="close" (click)="close()">close</mat-icon>
         <h2 *ngIf="!update">Add Friend</h2>
         <h2 *ngIf="update">{{friend?.name || 'No Name'}}</h2>
       </div>
@@ -31,8 +31,7 @@
           [matAutocomplete]="auto"
           [matChipInputFor]="chipList"
           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          (matChipInputTokenEnd)="add($event)"
-          (blur)="onBlur($event)">
+          (matChipInputTokenEnd)="add($event)">
       </mat-chip-list>
     </mat-form-field>
 

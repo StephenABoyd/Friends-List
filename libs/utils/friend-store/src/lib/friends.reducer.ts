@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store"
-import { addToAllFriends, addToMyFriends, removeFromMyFriends, selectFriend, updateFriend } from "./friends.actions";
+import { addToAllFriends, addToMyFriends, removeFromMyFriends, updateFriend } from "./friends.actions";
 
 const mockFriends: Friend[] = [
   {
@@ -70,13 +70,11 @@ export interface Friend {
 export interface State {
   allFriends: Friend[];
   myFriends: Friend[];
-  selectedFriend: Friend | undefined;
 }
 
 export const initialState: State = {
   allFriends: mockFriends,
-  myFriends: mockFriends,
-  selectedFriend: undefined
+  myFriends: mockFriends
 }
 
 const _friendReducer = createReducer(
@@ -116,10 +114,6 @@ const _friendReducer = createReducer(
       }
       return friend;
     })
-  })),
-  on(selectFriend, (state, action) => ({
-    ...state,
-    selectedFriend: action.friend
   }))
 );
 

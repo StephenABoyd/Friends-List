@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { ShellHeaderComponent } from './shell-header.component';
 
 describe('ShellHeaderComponent', () => {
@@ -8,7 +8,13 @@ describe('ShellHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShellHeaderComponent ]
+      declarations: [ ShellHeaderComponent ],
+      providers: [
+        provideMockStore({ initialState: {
+          allFriends: [],
+          myFriends: []
+        }})
+      ]
     })
     .compileComponents();
   });

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
 import { DashboardsComponent } from './dashboards.component';
 
 describe('DashboardsComponent', () => {
@@ -8,7 +8,13 @@ describe('DashboardsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardsComponent ]
+      declarations: [ DashboardsComponent ],
+      providers:[
+        provideMockStore({initialState: {
+          allFriends: [],
+          myFriends: []
+        }})
+      ]
     })
     .compileComponents();
   });
