@@ -113,8 +113,7 @@ export class AgeRangeGraphComponent implements OnChanges, AfterViewInit {
 
     const line: any = d3.line()
       .x(function(d, i) { return x(i); })
-      .y(function(d: any) { return y(d.count)})
-      .curve(d3.curveCatmullRom);
+      .y(function(d: any) { return y(d.count)});
 
     svg.append('path')
       .datum(this.ranges)

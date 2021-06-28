@@ -39,4 +39,4 @@ This project maintains a list of friends and contains 2 graphs displaying inform
   - Graph 1 is a bar graph that charts the age of each of your friends
   - Graph 2 is a line graph that shows age ranges and how many friends you have in each range
 
-  ![Graphs](https://github.com/StephenABoyd/Friends-List/blob/main/assets/Graphs.PNG)
+  ![Graphs](https://github.com/StephenABoyd/Friends-List/blob/main/assets/Graphs-Line.PNG)
