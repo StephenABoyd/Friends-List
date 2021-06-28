@@ -5,8 +5,12 @@
 ---
 
 ### This project was made with:
-|--|--|
-|Angular 12|NgRx|
+
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+
 - [Angular 12](https://angular.io/)
 - [NgRx](https://ngrx.io/)
 - [D3](https://www.npmjs.com/package/d3)
