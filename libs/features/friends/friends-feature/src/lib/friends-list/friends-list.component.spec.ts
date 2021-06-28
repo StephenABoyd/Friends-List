@@ -4,7 +4,7 @@ import { FriendsListComponent } from './friends-list.component';
 describe('FriendsListComponent', () => {
   let component: FriendsListComponent;
   let fixture: ComponentFixture<FriendsListComponent>;
-  let mockFriend = {
+  const mockFriend = {
     name: 'Tyler',
     age: 32,
     weight: 200,
@@ -38,7 +38,7 @@ describe('FriendsListComponent', () => {
         } as any)
       });
 
-      expect(component.myFriends).toEqual([{ name: 'Tyler' }])
+      expect(component.myFriends).toEqual([{ name: 'Tyler' }]);
     });
   });
 
@@ -46,7 +46,7 @@ describe('FriendsListComponent', () => {
     it('should emit friend removal', () => {
       const removeSpy = jest.spyOn(component.removeFriend, 'emit');
 
-      component.remove(mockFriend)
+      component.remove(mockFriend);
 
       expect(removeSpy).toHaveBeenCalledTimes(1);
       expect(removeSpy).toHaveBeenCalledWith(mockFriend);
@@ -57,7 +57,7 @@ describe('FriendsListComponent', () => {
     it('should emit friend removal', () => {
       const selectspy = jest.spyOn(component.selected, 'emit');
       component.selectable = true;
-      component.select(mockFriend)
+      component.select(mockFriend);
 
       expect(selectspy).toHaveBeenCalledTimes(1);
       expect(selectspy).toHaveBeenCalledWith(mockFriend);
@@ -66,7 +66,7 @@ describe('FriendsListComponent', () => {
     it('should emit friend removal', () => {
       const selectspy = jest.spyOn(component.selected, 'emit');
       component.selectable = false;
-      component.select(mockFriend)
+      component.select(mockFriend);
 
       expect(selectspy).not.toHaveBeenCalled();
     });

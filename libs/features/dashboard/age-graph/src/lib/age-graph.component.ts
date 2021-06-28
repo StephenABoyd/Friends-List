@@ -62,14 +62,14 @@ export class AgeGraphComponent implements OnChanges, AfterViewInit {
 
     bars.append('rect')
       .attr('x', x(0))
-      .attr('y', function(d) { return y(d.name) as number })
-      .attr('width', function(d) { return x(d.age as number) })
+      .attr('y', function(d) { return y(d.name) as number; })
+      .attr('width', function(d) { return x(d.age as number); })
       .attr('height', y.bandwidth())
       .attr('fill', '#673ab7');
 
     bars.append('text')
         .attr("x", function(d) { return x(d.age as number) - 3; })
-        .attr("y", function(d) { return (y(d.name) as number) + (y.bandwidth() / 2) })
+        .attr("y", function(d) { return (y(d.name) as number) + (y.bandwidth() / 2); })
         .attr("dy", ".35em")
         .attr('fill', 'white')
         .text(function(d) { return d.age as number; });

@@ -1,4 +1,4 @@
-import { createReducer, on } from "@ngrx/store"
+import { createReducer, on } from "@ngrx/store";
 import { addToAllFriends, addToMyFriends, removeFromMyFriends, updateFriend } from "./friends.actions";
 
 export interface Friend {
@@ -16,19 +16,19 @@ export interface State {
 export const initialState: State = {
   allFriends: [],
   myFriends: []
-}
+};
 
 const _friendReducer = createReducer(
   initialState,
   on(addToAllFriends, (state, action) => {
     const allFriends = [...state.allFriends];
     if (allFriends.findIndex(friend => friend.name === action.friend.name) === -1) {
-      allFriends.push(action.friend)
+      allFriends.push(action.friend);
     }
     return {
       ...state,
       allFriends
-    }
+    };
   }),
   on(addToMyFriends, (state, action) => ({
     ...state,

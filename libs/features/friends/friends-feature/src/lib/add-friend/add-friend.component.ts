@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { State, Friend } from '@app-friends/utils/friend-store';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'add-friend',
@@ -76,7 +75,7 @@ export class AddFriendComponent implements OnChanges {
   }
 
   selected(event: MatAutocompleteSelectedEvent) {
-    this.selectedFriends.push(event.option.value)
+    this.selectedFriends.push(event.option.value);
     this.friendInput.setValue(null);
     if (this.friendInputField) {
       this.friendInputField.nativeElement.value = '';
@@ -149,10 +148,9 @@ export class AddFriendComponent implements OnChanges {
   }
 
   private filterFriends(friendName: string) {
-    console.log(friendName)
     const availableFriends = friendName
           ? this.allFriends.filter(friend => friend.name.indexOf(friendName) >= 0)
-          : this.allFriends.slice()
+          : this.allFriends.slice();
 
     return availableFriends.filter(availableFriend => this.selectedFriends.findIndex(friend => friend.name === availableFriend.name) === -1);
   }

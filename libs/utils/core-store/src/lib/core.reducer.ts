@@ -1,5 +1,5 @@
 import { updateNavItems } from "./core.actions";
-import { createReducer, on } from "@ngrx/store"
+import { createReducer, on } from "@ngrx/store";
 
 export interface NavItem {
   label: string;

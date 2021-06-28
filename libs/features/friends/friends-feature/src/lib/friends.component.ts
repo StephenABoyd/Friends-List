@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { addToAllFriends, addToMyFriends, Friend, removeFromMyFriends, State, updateFriend } from '@app-friends/utils/friend-store';
 import { Store } from '@ngrx/store';

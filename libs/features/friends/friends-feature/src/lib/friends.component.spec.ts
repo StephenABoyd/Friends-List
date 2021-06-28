@@ -1,4 +1,3 @@
-import { J } from '@angular/cdk/keycodes';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
@@ -9,7 +8,7 @@ describe('FriendsComponent', () => {
   let component: FriendsComponent;
   let fixture: ComponentFixture<FriendsComponent>;
   let store: MockStore;
-  let mockFriend = {
+  const mockFriend = {
     name: 'Tyler',
     age: 25,
     weight: 200,
@@ -52,7 +51,7 @@ describe('FriendsComponent', () => {
       expect(dispatchSpy).toHaveBeenCalledWith({
         type: '[Friends] Remove From My Friends',
         friend: mockFriend
-      })
+      });
     });
   });
 
@@ -65,7 +64,7 @@ describe('FriendsComponent', () => {
       expect(dispatchSpy).toHaveBeenCalledWith({
         type: '[Friends] Add To All Friends',
         friend: mockFriend
-      })
+      });
     });
   });
 
@@ -78,7 +77,7 @@ describe('FriendsComponent', () => {
       expect(dispatchSpy).toHaveBeenCalledWith({
         type: '[Friends] Add To My Friends',
         friend: mockFriend
-      })
+      });
     });
   });
 

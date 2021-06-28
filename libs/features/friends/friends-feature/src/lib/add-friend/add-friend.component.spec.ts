@@ -66,7 +66,7 @@ describe('AddFriendComponent', () => {
       expect(component.allFriends).toEqual([
         { name: 'Tyler', age: 25, weight: 200 },
         { name: 'Sarah', age: 20, weight: 120 }
-      ])
+      ]);
     });
 
     it('should populate form with friend details', () => {
@@ -195,7 +195,7 @@ describe('AddFriendComponent', () => {
       component.addFriendForm.get('friend')?.setValue('');
       component.selectedFriends = [
         { name: 'Andy' }
-      ]
+      ];
       const emitSpy = jest.spyOn(component.addToMyFriends, 'emit');
 
       component.onSubmit();
@@ -218,7 +218,7 @@ describe('AddFriendComponent', () => {
       component.addFriendForm.get('friend')?.setValue('');
       component.selectedFriends = [
         { name: 'Andy' }
-      ]
+      ];
       const emitSpy = jest.spyOn(component.updateFriend, 'emit');
 
       component.onSubmit();
@@ -244,7 +244,7 @@ describe('AddFriendComponent', () => {
       component.addFriendForm.get('friend')?.setValue('');
       component.selectedFriends = [
         { name: 'Andy' }
-      ]
+      ];
       const emitSpy = jest.spyOn(component.addToMyFriends, 'emit');
 
       component.onSubmit();

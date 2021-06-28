@@ -18,7 +18,7 @@ export class DashboardsComponent implements OnInit {
   ngOnInit() {
     this.friends = this.store.select('friends');
     this.friends.subscribe((friendsState) => {
-        this.myFriends = friendsState.myFriends}
-    );
+        this.myFriends = friendsState.myFriends;
+    });
   }
 }

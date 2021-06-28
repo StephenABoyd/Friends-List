@@ -1,5 +1,5 @@
 {
-  "extends": ["../../../.eslintrc.json"],
+  "extends": ["../../../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
@@ -9,6 +9,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "semi": ["error"],
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -21,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app-friends",
+            "prefix": "",
             "style": "kebab-case"
           }
         ]

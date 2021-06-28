@@ -38,7 +38,6 @@ export class AgeRangeGraphComponent implements OnChanges, AfterViewInit {
   ];
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
     if (changes.friends?.currentValue) {
       this.myFriends = changes.friends.currentValue.myFriends;
       this.updateRangeData();
@@ -104,15 +103,15 @@ export class AgeRangeGraphComponent implements OnChanges, AfterViewInit {
       .range([0, size.chartHeight]);
 
     const yAxis = d3.axisLeft(y)
-      .ticks(highestCount)
+      .ticks(highestCount);
 
     svg.append('g')
        .attr('transform', 'translate(0,-10)')
-       .call(yAxis)
+       .call(yAxis);
 
     const line: any = d3.line()
       .x(function(d, i) { return x(i); })
-      .y(function(d: any) { return y(d.count)});
+      .y(function(d: any) { return y(d.count); });
 
     svg.append('path')
       .datum(this.ranges)
@@ -120,7 +119,7 @@ export class AgeRangeGraphComponent implements OnChanges, AfterViewInit {
       .attr('fill', 'none')
       .attr('stroke', '#673ab7')
       .attr('stroke-width', '3')
-      .attr('transform', 'translate(0,-10)')
+      .attr('transform', 'translate(0,-10)');
   }
 
   private getHighestCount(): number {
