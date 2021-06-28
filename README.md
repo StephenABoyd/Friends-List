@@ -11,7 +11,6 @@
 - [Jest](https://www.npmjs.com/package/jest)
 - [Angular Material](https://material.angular.io/)
 - [Nx (Nrwl)](https://nx.dev/)
-- [Cypress](https://www.cypress.io/)
 - Node version `>=12.14.1` or `>14.0.0`
 ---
 
