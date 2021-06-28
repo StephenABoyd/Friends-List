@@ -1,8 +1,9 @@
 import { J } from '@angular/cdk/keycodes';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import exp = require('node:constants');
 import { FriendsComponent } from './friends.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FriendsComponent', () => {
   let component: FriendsComponent;
@@ -14,10 +15,12 @@ describe('FriendsComponent', () => {
     weight: 200,
     friends: []
   };
+  let snackBar: MatSnackBar;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ FriendsComponent ],
+      imports: [ MatSnackBarModule, BrowserAnimationsModule ],
       providers:[
         provideMockStore({initialState: {
           allFriends: [],
@@ -30,6 +33,7 @@ describe('FriendsComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FriendsComponent);
+    snackBar = TestBed.get(MatSnackBar);
     store = TestBed.inject(MockStore);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -81,13 +85,15 @@ describe('FriendsComponent', () => {
   describe('updateFriend', () => {
     it('should dispatch to add to all friends', () => {
       const dispatchSpy = jest.spyOn(store, 'dispatch');
+      const openSpy = jest.spyOn(snackBar, 'open');
       component.updateFriend(mockFriend);
 
       expect(dispatchSpy).toHaveBeenCalledTimes(1);
       expect(dispatchSpy).toHaveBeenCalledWith({
         type: '[Friends] Update Friend',
         friend: mockFriend
-      })
+      });
+      expect(openSpy).toHaveBeenCalledTimes(1);
     });
   });
 

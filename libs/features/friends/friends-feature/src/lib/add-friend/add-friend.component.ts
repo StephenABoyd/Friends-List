@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { State, Friend } from '@app-friends/utils/friend-store';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'add-friend',

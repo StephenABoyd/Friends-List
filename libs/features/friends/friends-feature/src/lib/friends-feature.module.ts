@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FriendsComponent } from './friends.component';
 import { AddFriendComponent } from './add-friend/add-friend.component';
 import { FriendsListComponent } from './friends-list/friends-list.component';
@@ -35,6 +36,7 @@ export const friendsFeatureRoutes: Route[] = [];
     MatInputModule,
     MatChipsModule,
     MatCardModule,
+    MatSnackBarModule,
     ReactiveFormsModule
   ],
   declarations: [
