@@ -1,65 +1,6 @@
 import { createReducer, on } from "@ngrx/store"
 import { addToAllFriends, addToMyFriends, removeFromMyFriends, updateFriend } from "./friends.actions";
 
-const mockFriends: Friend[] = [
-  {
-    name: 'Tyler',
-    age: 29,
-    weight: 200,
-    friends: [
-      { name: 'Andy' },
-      { name: 'Sarah' },
-      { name: 'Mike' }
-    ]
-  },
-  {
-    name: 'Sarah',
-    age: 24,
-    weight: 115,
-    friends: [
-      { name: 'Andy' },
-      { name: 'Tyler' },
-      { name: 'Mike' }
-    ]
-  },
-  {
-    name: 'Andy',
-    age: 26,
-    weight: 165,
-    friends: [
-      { name: 'Tyler' },
-      { name: 'Sarah' },
-      { name: 'Mike' }
-    ]
-  },
-  {
-    name: 'Molly',
-    age: 26,
-    weight: 120,
-    friends: [
-      { name: 'Kim' }
-    ]
-  },
-  {
-    name: 'Kim',
-    age: 56,
-    weight: 125,
-    friends: [
-      { name: 'Molly' }
-    ]
-  },
-  {
-    name: 'Mike',
-    age: 67,
-    weight: 210,
-    friends: [
-      { name: 'Andy' },
-      { name: 'Sarah' },
-      { name: 'Tyler' }
-    ]
-  }
-]
-
 export interface Friend {
   name: string;
   friends?: Friend[];
@@ -73,8 +14,8 @@ export interface State {
 }
 
 export const initialState: State = {
-  allFriends: mockFriends,
-  myFriends: mockFriends
+  allFriends: [],
+  myFriends: []
 }
 
 const _friendReducer = createReducer(
