@@ -1,20 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { FriendsComponent } from './friends.component';
+import { MatTableModule } from '@angular/material/table';
+import { Route, RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+
 import { AddFriendComponent } from './add-friend/add-friend.component';
 import { FriendsListComponent } from './friends-list/friends-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FriendsComponent } from './friends.component';
 
 export const friendsFeatureRoutes: Route[] = [];
 

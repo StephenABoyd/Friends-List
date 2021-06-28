@@ -1,7 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs/operators';
-import { addToAllFriends } from "./friends.actions";
+
+import { addToAllFriends } from './friends.actions';
 
 @Injectable()
 export class FriendsEffects {

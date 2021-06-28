@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { FriendsComponent } from './friends.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+
+import { FriendsComponent } from './friends.component';
 
 describe('FriendsComponent', () => {
   let component: FriendsComponent;

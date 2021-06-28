@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Friend, State } from '@app-friends/utils/friend-store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 @Component({

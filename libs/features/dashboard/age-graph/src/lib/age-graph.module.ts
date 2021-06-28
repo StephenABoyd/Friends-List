@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AgeGraphComponent } from './age-graph.component';
+import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+
+import { AgeGraphComponent } from './age-graph.component';
 
 @NgModule({
   imports: [

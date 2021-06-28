@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShellHeaderComponent } from './shell-header/shell-header.component';
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+
+import { ShellHeaderComponent } from './shell-header/shell-header.component';
 
 @NgModule({
   imports: [

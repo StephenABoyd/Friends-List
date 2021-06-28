@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { NavItem, State } from '@app-friends/utils/core-store';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'shell-header',

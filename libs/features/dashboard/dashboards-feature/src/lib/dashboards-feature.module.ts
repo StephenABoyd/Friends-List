@@ -1,12 +1,18 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-import { DashboardsComponent } from './dashboards.component';
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
 import { AgeGraphModule } from '@app-friends/features/dashboard/age-graph';
 import { AgeRangeGraphModule } from '@app-friends/features/dashboard/age-range-graph';
+import { StoreModule } from '@ngrx/store';
 
-export const dashboardsFeatureRoutes: Route[] = [];
+import { DashboardsComponent } from './dashboards.component';
+
+export const dashboardsFeatureRoutes: Route[] = [
+  {
+    path: '',
+    component: DashboardsComponent
+  }
+];
 
 @NgModule({
   imports: [
@@ -14,12 +20,7 @@ export const dashboardsFeatureRoutes: Route[] = [];
     StoreModule,
     AgeGraphModule,
     AgeRangeGraphModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: DashboardsComponent
-      }
-    ])
+    RouterModule.forChild(dashboardsFeatureRoutes)
   ],
   declarations: [
     DashboardsComponent

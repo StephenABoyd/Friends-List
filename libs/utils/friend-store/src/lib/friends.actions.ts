@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { Friend } from './friends.reducer';
 
 export const addToAllFriends = createAction('[Friends] Add To All Friends', props<{ friend: Friend }>());

@@ -1,5 +1,6 @@
-import { createReducer, on } from "@ngrx/store";
-import { addToAllFriends, addToMyFriends, removeFromMyFriends, updateFriend } from "./friends.actions";
+import { createReducer, on } from '@ngrx/store';
+
+import { addToAllFriends, addToMyFriends, removeFromMyFriends, updateFriend } from './friends.actions';
 
 export interface Friend {
   name: string;
