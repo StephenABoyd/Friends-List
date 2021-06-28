@@ -31,10 +31,10 @@ This project maintains a list of friends and contains 2 graphs displaying inform
  - Delete friends
  - Maintains a list of all previous added friends, to autocomplete future friends of friends
 
-  ![Edit Friend](./assets/Edit-Friend.png)
+  ![Edit Friend](https://github.com/StephenABoyd/Friends-List/blob/main/assets/Edit-Friend.PNG)
 
 #### Graphs
   - Graph 1 is a bar graph that charts the age of each of your friends
   - Graph 2 is a line graph that shows age ranges and how many friends you have in each range
 
-  ![Graphs](./assets/Graphs.png)
+  ![Graphs](https://github.com/StephenABoyd/Friends-List/blob/main/assets/Graphs.PNG)
