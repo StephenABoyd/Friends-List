@@ -10,10 +10,11 @@
 - [Angular Material](https://material.angular.io/)
 - [Nx (Nrwl)](https://nx.dev/)
 - [Cypress](https://www.cypress.io/)
-
+- Node version `>=12.14.1` or `>14.0.0`
 ---
 
 ### How to run
+
 1. `npm i`
 2. `ng serve`
 3. Go to [localhost:4200](http://localhost:4200)
