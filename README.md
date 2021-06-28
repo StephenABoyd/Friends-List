@@ -14,6 +14,7 @@
 | [Cypress](https://www.cypress.io/) | Node version `>=12.14.1` or `>14.0.0` |
 
 
+
 - [Angular 12](https://angular.io/)
 - [NgRx](https://ngrx.io/)
 - [D3](https://www.npmjs.com/package/d3)
