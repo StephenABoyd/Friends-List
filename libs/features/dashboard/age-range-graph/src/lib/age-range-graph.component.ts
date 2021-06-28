@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Friend, State } from '@app-friends/utils/friend-store';
 import * as d3 from 'd3';
 
